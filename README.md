@@ -74,3 +74,61 @@ The project will be considered successful if:
 
 ### Business requirement 2:
 - The client is interested in determining whether a given rice leaf image contains a disease and, if so, identifying the specific type of disease.
+
+
+## Hypotheses
+
+### Hypothesis 1 - Visual Distinction Between Healthy and Diseased Leaves
+**Hypothesis:**
+There are observable visual differences (such as color, texture, and lesion patterns) between healthy rice leaves and diseased rice leaves.
+
+**Validation:**
+- Perform exploratory data analysis (EDA) on image samples from each class.
+- Compare color distributions, texture patterns, and visible lesions.
+- Visualize class-wise image samples and feature differences.
+
+**Statistical Evidence:**
+- Distribution of pixel intensity and color channels across classes
+- Image feature comparisons (e.g., mean/variance of RGB values)
+- Visual confirmation through plotted samples
+
+### Hypothesis 2 - Distinguishability Between Disease Types
+**Hypothesis:**
+Different rice leaf diseases exhibit distinct visual patterns that allow them to be differentiated from one another.
+
+**Validation:**
+- Compare images across disease classes.
+- Analyze intra-class vs inter-class variability.
+- Evaluate model confusion matrix to assess misclassification patterns.
+
+**Statistical Evidence:**
+- Confusion matrix showing class separability
+- Class-wise precision and recall scores
+- Feature distribution differences across disease categories
+
+### Hypothesis 3 - Model Can Accurately Classify Rice Leaf Diseases
+**Hypothesis:**
+A machine learning model can learn to accurately classify rice leaf images into healthy or specific disease categories.
+
+**Validation:**
+- Train an image classification model (e.g., CNN or transfer learning).
+- Evaluate performance on validation/test data.
+
+**Statistical Evidence:**
+- Accuracy score
+- Precision, Recall, F1-score
+- Loss and accuracy curves during training 
+
+### Hypothesis 4 - Class Imbalance Affects Model Performance
+**Hypothesis:**
+Imbalanced class distribution negatively impacts the model’s ability to correctly classify underrepresented diseases.
+
+**Validation:**
+- Analyze class distribution in the dataset.
+- Compare model performance across classes.
+- Optionally apply balancing techniques (augmentation, weighting) and re-evaluate.
+
+**Statistical Evidence:**
+- Class frequency distribution
+- Per-class performance metrics
+- Improvement after applying balancing techniques (if implemented)

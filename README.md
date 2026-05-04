@@ -55,3 +55,22 @@ Each image is paired with a corresponding `.txt` annotation file containing obje
 - The dataset is imbalanced, with some classes (e.g., Brown Spot, Leaf Smut) having significantly more samples than others.
 - Multiple bounding boxes may exist per image, representing different infected regions.
 - Suitable for training deep learning models such as YOLO for real-time disease detection.
+
+
+## Business Requirements
+
+The client is a fictional agricultural advisor working with rice farmers to improve crop health and yield. Rice diseases represent a major threat to production, often leading to significant losses when not identified and treated early.
+
+Currently, disease detection relies heavily on manual inspection, which is time-consuming, error-prone, and requires expert knowledge that may not always be accessible to farmers in the field. The lack of timely and accurate diagnosis can result in delayed treatment and reduced crop productivity.
+
+The project will be considered successful if:
+- Visual differences between healthy and diseased rice leaves are identified and clearly presented.
+- A machine learning model can reliably classify rice leaf diseases from images.
+- The results are accessible through an interactive dashboard for end users.
+
+
+### Business requirement 1:
+- The client is interested in a study that visually differentiates healthy rice leaves from leaves affected by different diseases.
+
+### Business requirement 2:
+- The client is interested in determining whether a given rice leaf image contains a disease and, if so, identifying the specific type of disease.

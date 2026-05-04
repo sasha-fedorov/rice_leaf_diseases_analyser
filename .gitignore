@@ -1,4 +1,7 @@
 kaggle.json
+inputs/datasets/*
+!inputs/datasets/.gitkeep
+*.zip
 
 # https://github.com/github/gitignore/blob/main/Python.gitignore
 

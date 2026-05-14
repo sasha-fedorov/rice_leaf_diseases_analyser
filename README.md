@@ -59,76 +59,67 @@ Each image is paired with a corresponding `.txt` annotation file containing obje
 
 ## Business Requirements
 
-The client is a fictional agricultural advisor working with rice farmers to improve crop health and yield. Rice diseases represent a major threat to production, often leading to significant losses when not identified and treated early.
+The client is a fictional agricultural advisory service working with rice farmers to improve crop health and reduce yield loss caused by leaf diseases. Early disease identification is important for preventing the spread of infections and supporting timely treatment decisions.
 
-Currently, disease detection relies heavily on manual inspection, which is time-consuming, error-prone, and requires expert knowledge that may not always be accessible to farmers in the field. The lack of timely and accurate diagnosis can result in delayed treatment and reduced crop productivity.
+Currently, disease detection relies mainly on manual visual inspection, which can be inconsistent, time-consuming, and dependent on expert knowledge. The client is looking for a data-driven solution capable of identifying rice leaf diseases from images.
 
 The project will be considered successful if:
-- Visual differences between healthy and diseased rice leaves are identified and clearly presented.
-- A machine learning model can reliably classify rice leaf diseases from images.
-- The results are accessible through an interactive dashboard for end users.
+- Visual differences between healthy and diseased rice leaves are identified and presented clearly.
+- A machine learning model can accurately classify rice leaf images into healthy or disease categories.
+- The results are accessible through an interactive dashboard for non-technical users.
 
+**Business Requirement 1:**
+The client is interested in a study that visually differentiates healthy rice leaves from leaves affected by different diseases.
 
-### Business requirement 1:
-- The client is interested in a study that visually differentiates healthy rice leaves from leaves affected by different diseases.
-
-### Business requirement 2:
-- The client is interested in determining whether a given rice leaf image contains a disease and, if so, identifying the specific type of disease.
+**Business Requirement 2:**
+The client is interested in a machine learning solution capable of classifying rice leaf images according to disease type.
 
 
 ## Hypotheses
 
-### Hypothesis 1 - Visual Distinction Between Healthy and Diseased Leaves
+### Hypothesis 1 - Healthy and Diseased Leaves Have Distinct Visual Patterns
+
 **Hypothesis:**
-There are observable visual differences (such as color, texture, and lesion patterns) between healthy rice leaves and diseased rice leaves.
+Healthy rice leaves and diseased rice leaves exhibit noticeable visual differences in color, texture, and lesion patterns.
 
 **Validation:**
-- Perform exploratory data analysis (EDA) on image samples from each class.
-- Compare color distributions, texture patterns, and visible lesions.
-- Visualize class-wise image samples and feature differences.
+- Perform exploratory image analysis on samples from each class.
+- Compare visual characteristics between healthy and diseased leaves.
+- Analyze image distributions and representative examples.
 
 **Statistical Evidence:**
-- Distribution of pixel intensity and color channels across classes
-- Image feature comparisons (e.g., mean/variance of RGB values)
-- Visual confirmation through plotted samples
+- Sample image comparisons
+- Color distribution analysis
+- Class-wise image visualizations
 
-### Hypothesis 2 - Distinguishability Between Disease Types
+
+### Hypothesis 2 - Different Rice Diseases Can Be Distinguished from Images
+
 **Hypothesis:**
-Different rice leaf diseases exhibit distinct visual patterns that allow them to be differentiated from one another.
+Different rice leaf diseases contain unique visual characteristics that allow them to be differentiated from one another using image classification techniques.
 
 **Validation:**
-- Compare images across disease classes.
-- Analyze intra-class vs inter-class variability.
-- Evaluate model confusion matrix to assess misclassification patterns.
+- Compare image samples across disease classes.
+- Train a classification model and analyze class prediction performance.
+- Evaluate which classes are most frequently confused.
 
 **Statistical Evidence:**
-- Confusion matrix showing class separability
-- Class-wise precision and recall scores
-- Feature distribution differences across disease categories
+- Confusion matrix
+- Precision, Recall, and F1-score by class
+- Misclassification analysis
 
-### Hypothesis 3 - Model Can Accurately Classify Rice Leaf Diseases
+
+### Hypothesis 3 - Class Imbalance Influences Model Performance
+
 **Hypothesis:**
-A machine learning model can learn to accurately classify rice leaf images into healthy or specific disease categories.
+The imbalance in class distribution negatively affects prediction performance for underrepresented disease categories.
 
 **Validation:**
-- Train an image classification model (e.g., CNN or transfer learning).
-- Evaluate performance on validation/test data.
+- Analyze dataset class distribution.
+- Compare performance metrics across classes.
+- Evaluate whether minority classes produce lower prediction accuracy.
 
 **Statistical Evidence:**
-- Accuracy score
-- Precision, Recall, F1-score
-- Loss and accuracy curves during training 
-
-### Hypothesis 4 - Class Imbalance Affects Model Performance
-**Hypothesis:**
-Imbalanced class distribution negatively impacts the model’s ability to correctly classify underrepresented diseases.
-
-**Validation:**
-- Analyze class distribution in the dataset.
-- Compare model performance across classes.
-- Optionally apply balancing techniques (augmentation, weighting) and re-evaluate.
-
-**Statistical Evidence:**
-- Class frequency distribution
-- Per-class performance metrics
-- Improvement after applying balancing techniques (if implemented)
+- Class distribution plots
+- Per-class evaluation metrics
+- Comparison of prediction performance between majority and minority classes

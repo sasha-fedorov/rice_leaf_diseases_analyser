@@ -1,0 +1,10 @@
+Class,Train Images,Validation Images,Total Images
+BacterialLeafBlight,1600,400,2000
+BrownSpot,1600,400,2000
+Healthy,347,86,433
+Hispa,345,86,431
+LeafBlast,360,89,449
+LeafScald,365,91,456
+LeafSmut,1600,400,2000
+NarrowBrownLeafSpot,355,88,443
+NeckBlast,363,90,453

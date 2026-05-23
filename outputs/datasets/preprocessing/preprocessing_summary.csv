@@ -1,0 +1,6 @@
+parameter,value
+image_size,"(224, 224)"
+normalization,"Pixel values scaled to [0,1]"
+augmentation,"Rotation, zoom, shift, brightness, horizontal flip"
+train_samples,6935
+validation_samples,1730

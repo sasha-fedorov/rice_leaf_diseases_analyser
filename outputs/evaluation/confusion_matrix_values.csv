@@ -1,0 +1,10 @@
+,BacterialLeafBlight,BrownSpot,Healthy,Hispa,LeafBlast,LeafScald,LeafSmut,NarrowBrownLeafSpot,NeckBlast
+BacterialLeafBlight,360,13,0,0,12,7,7,1,0
+BrownSpot,17,361,0,0,6,2,4,10,0
+Healthy,1,11,65,8,0,0,1,0,0
+Hispa,4,1,2,71,2,5,1,0,0
+LeafBlast,9,10,0,0,58,8,0,4,0
+LeafScald,10,0,0,1,9,67,0,4,0
+LeafSmut,18,26,0,0,0,0,356,0,0
+NarrowBrownLeafSpot,9,9,0,0,16,1,0,53,0
+NeckBlast,0,0,0,0,0,0,0,0,90

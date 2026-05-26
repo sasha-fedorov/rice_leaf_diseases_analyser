@@ -1,0 +1,6 @@
+metric,value
+validation_accuracy,0.8561
+macro_precision,0.8383
+macro_recall,0.8071
+macro_f1_score,0.8196
+weighted_f1_score,0.8565

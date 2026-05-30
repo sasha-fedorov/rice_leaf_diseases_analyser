@@ -1,5 +1,12 @@
 import streamlit as st
 
+from src.data_utils import (
+    load_class_distribution,
+    get_sample_images_by_class,
+    load_class_index_mapping,
+)
+from src.visualization_utils import plot_class_distribution
+
 
 def app():
     st.title("Dataset Analysis")
@@ -8,21 +15,42 @@ def app():
         "image characteristics that inform model performance."
     )
 
-    st.header("Class Distribution")
-    st.markdown(
-        "This page will display class imbalance and help identify which "
-        "disease categories may need special attention during training."
+    distribution = load_class_distribution()
+    st.subheader("Class Distribution")
+    st.write(
+        "The dataset includes 9 classes with significant imbalance between"
+        "common diseases and less frequent categories."
+    )
+    st.pyplot(plot_class_distribution(distribution))
+    st.dataframe(distribution.set_index("Class"))
+
+    st.subheader("Visual Sample Review")
+    st.write(
+        "Representative images from each class help validate whether healthy"
+        "leaves and disease categories are visually distinct."
     )
 
-    st.header("Visual Sample Review")
-    st.markdown(
-        "Sample images from each class can be shown here to compare healthy "
-        "and diseased leaf appearances."
-    )
+    samples = get_sample_images_by_class(limit_per_class=1)
+    class_mapping = load_class_index_mapping()
+    sample_items = []
+    for class_id, image_paths in samples.items():
+        class_name = class_mapping.get(int(class_id), f"Class {class_id}")
+        sample_items.append((class_name, image_paths[0]))
 
-    st.header("Hypothesis Validation")
+    if sample_items:
+        for idx in range(0, len(sample_items), 3):
+            cols = st.columns(3)
+            for column, item in zip(cols, sample_items[idx: idx + 3]):
+                class_name, image_path = item
+                column.image(str(image_path),
+                             caption=class_name,
+                             use_container_width=True)
+    else:
+        st.warning("No sample images were found in the dataset directory.")
+
+    st.subheader("Hypothesis Validation")
     st.markdown(
-        "The exploratory analysis supports the idea that healthy and diseased "
-        "leaves are visually different, and that distinct disease patterns"
-        "exist."
+        "- Healthy and diseased leaves show distinct visual patterns.\n"
+        "- Different diseases can be distinguished from leaf images.\n"
+        "- Class imbalance is present and may impact model performance."
     )

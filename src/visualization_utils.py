@@ -34,13 +34,13 @@ def plot_confusion_matrix_from_file(path):
 
 
 def plot_class_report(report: pd.DataFrame):
-    if report.index.name == "Unnamed: 0":
-        report = report.set_index("Unnamed: 0")
     fig, ax = plt.subplots(figsize=(10, 6))
+    report_reset = report.reset_index()
+    index_col_name = report_reset.columns[0]
     sns.barplot(
-        data=report.reset_index(),
+        data=report_reset,
         x="f1-score",
-        y="Unnamed: 0",
+        y=index_col_name,
         palette="viridis",
         ax=ax,
     )

@@ -28,9 +28,7 @@ def load_training_history() -> pd.DataFrame:
 
 @st.cache_data
 def load_classification_report() -> pd.DataFrame:
-    report = _read_csv(CLASSIFICATION_REPORT_FILE)
-    if "Unnamed: 0" in report.columns:
-        report = report.set_index("Unnamed: 0")
+    report = pd.read_csv(CLASSIFICATION_REPORT_FILE, index_col=0)
     return report
 
 

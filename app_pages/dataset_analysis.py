@@ -1,4 +1,6 @@
 import streamlit as st
+import numpy as np
+from PIL import Image
 
 from src.data_utils import (
     load_class_distribution,
@@ -6,6 +8,20 @@ from src.data_utils import (
     load_class_index_mapping,
 )
 from src.visualization_utils import plot_class_distribution
+
+
+def _average_images(paths, size=(256, 256)):
+    arrs = []
+    for p in paths:
+        try:
+            im = Image.open(p).convert("RGB").resize(size)
+            arrs.append(np.array(im, dtype=np.float32))
+        except Exception:
+            continue
+    if not arrs:
+        return None
+    avg = np.mean(arrs, axis=0).astype(np.uint8)
+    return Image.fromarray(avg)
 
 
 def app():
@@ -58,38 +74,94 @@ def app():
         "leaves and disease categories are visually distinct."
     )
 
-    class_filter = st.multiselect(
-        "Filter by class (select to show samples):",
-        options=sorted(class_mapping.values()),
-        default=list(class_mapping.values())
+    samples = get_sample_images_by_class(limit_per_class=3)
+
+    # Visual Examples: comparison tools
+    st.subheader("Visual Examples")
+    compare_mode = st.radio(
+        "Comparison type:",
+        ["Healthy vs Disease",
+         "Disease vs Disease"]
     )
 
-    if class_filter:
-        samples = get_sample_images_by_class(limit_per_class=2)
-        class_mapping_inv = {v: k for k, v in class_mapping.items()}
+    name_to_id = {v: str(k) for k, v in class_mapping.items()}
 
-        sample_items = []
-        for class_name in class_filter:
-            class_id = str(class_mapping_inv.get(class_name, ""))
-            if class_id in samples:
-                for image_path in samples[class_id]:
-                    sample_items.append((class_name, image_path))
+    if compare_mode == "Healthy vs Disease":
+        disease_choice = st.selectbox(
+            "Choose disease to compare with Healthy:",
+            options=[
+                n for n in sorted(class_mapping.values())
+                if n.lower() != "healthy"
+            ],
+        )
+        healthy_id = name_to_id.get("Healthy") or name_to_id.get("healthy")
+        disease_id = name_to_id.get(disease_choice)
 
-        if sample_items:
-            for idx in range(0, len(sample_items), 3):
-                cols = st.columns(3)
-                for column, item in zip(cols, sample_items[idx: idx + 3]):
-                    class_name, image_path = item
-                    with column:
-                        st.image(
-                            str(image_path),
-                            caption=class_name,
-                            use_container_width=True
-                        )
-        else:
-            st.warning("No sample images found for the selected classes.")
+        healthy_paths = samples.get(healthy_id, [])
+        disease_paths = samples.get(disease_id, [])
+
+        colL, colR = st.columns(2)
+        with colL:
+            st.markdown("**Healthy samples**")
+            if healthy_paths:
+                for p in healthy_paths:
+                    st.image(str(p), use_container_width=True)
+            else:
+                st.info("No healthy samples found.")
+            avg_h = _average_images(healthy_paths)
+            if avg_h is not None:
+                st.markdown("Average healthy image")
+                st.image(avg_h, use_container_width=True)
+        with colR:
+            st.markdown(f"**{disease_choice} samples**")
+            if disease_paths:
+                for p in disease_paths:
+                    st.image(str(p), use_container_width=True)
+            else:
+                st.info(f"No samples found for {disease_choice}.")
+            avg_d = _average_images(disease_paths)
+            if avg_d is not None:
+                st.markdown(f"Average {disease_choice} image")
+                st.image(avg_d, use_container_width=True)
+
     else:
-        st.info("Select classes above to view sample images.")
+        disease_options = sorted(class_mapping.values())
+        pair = st.multiselect(
+            "Select two diseases to compare:",
+            options=disease_options,
+            default=disease_options[:2]
+        )
+        if len(pair) != 2:
+            st.info("Select exactly two classes to compare.")
+        else:
+            id_a = name_to_id.get(pair[0])
+            id_b = name_to_id.get(pair[1])
+            paths_a = samples.get(id_a, [])
+            paths_b = samples.get(id_b, [])
+
+            colA, colB = st.columns(2)
+            with colA:
+                st.markdown(f"**{pair[0]} samples**")
+                if paths_a:
+                    for p in paths_a:
+                        st.image(str(p), use_container_width=True)
+                else:
+                    st.info(f"No samples for {pair[0]}.")
+                avg_a = _average_images(paths_a)
+                if avg_a is not None:
+                    st.markdown(f"Average {pair[0]} image")
+                    st.image(avg_a, use_container_width=True)
+            with colB:
+                st.markdown(f"**{pair[1]} samples**")
+                if paths_b:
+                    for p in paths_b:
+                        st.image(str(p), use_container_width=True)
+                else:
+                    st.info(f"No samples for {pair[1]}.")
+                avg_b = _average_images(paths_b)
+                if avg_b is not None:
+                    st.markdown(f"Average {pair[1]} image")
+                    st.image(avg_b, use_container_width=True)
 
     # Section 3: Dataset Insights
     st.header("3. Dataset Insights")
@@ -143,7 +215,7 @@ def app():
         "**Status: CONFIRMED**\n\n"
         "The dataset shows severe class imbalance (Brown Spot and Leaf Smut: "
         "2,000 images; Neck Blast: 453 images). This imbalance requires "
-        "mitigation strategies like class weighting  and data augmentation "
+        "mitigation strategies like class weighting and data augmentation "
         "during model training to ensure minority classes are learned "
         "effectively."
     )

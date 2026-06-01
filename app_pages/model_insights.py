@@ -16,8 +16,8 @@ from src.config import CONFUSION_MATRIX_FILE
 def app():
     st.title("Model Insights")
     st.markdown(
-        "Review the machine learning model used for rice leaf disease"
-        "classification and examine its performance against business"
+        "Review the machine learning model used for rice leaf disease "
+        "classification and examine its performance against business "
         "success criteria."
     )
 
@@ -96,6 +96,6 @@ def app():
         st.info("Classification report not available.")
 
     st.markdown(
-        "---\n" "Interpretation: The model meets the business requirements if"
+        "---\n" "Interpretation: The model meets the business requirements if "
         "the validation accuracy and macro F1-score exceed target thresholds."
     )

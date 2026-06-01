@@ -11,7 +11,7 @@ from src.visualization_utils import plot_class_distribution
 def app():
     st.title("Dataset Analysis & Exploratory Data Analysis")
     st.markdown(
-        "Explore the rice leaf dataset, examine class balance, and review"
+        "Explore the rice leaf dataset, examine class balance, and review "
         "image characteristics that inform model performance."
     )
 
@@ -22,8 +22,8 @@ def app():
     # Section 1: Class Distribution
     st.header("1. Class Distribution")
     st.write(
-        "The dataset includes 9 classes with significant imbalance between"
-        "common diseases and less frequent categories. This imbalance affects"
+        "The dataset includes 9 classes with significant imbalance between "
+        "common diseases and less frequent categories. This imbalance affects "
         "model training and performance."
     )
 
@@ -54,7 +54,7 @@ def app():
     # Section 2: Visual Sample Review
     st.header("2. Visual Sample Review")
     st.write(
-        "Representative images from each class help validate whether healthy"
+        "Representative images from each class help validate whether healthy "
         "leaves and disease categories are visually distinct."
     )
 
@@ -107,9 +107,9 @@ def app():
         st.metric("Max Class Imbalance", f"{imbalance_ratio:.1f}x")
 
     st.markdown(
-        "**Key Observation:** Brown Spot and Leaf Smut are over-represented"
-        "with 2,000 images each, while other disease classes have only"
-        "~350-450 images. This imbalance is addressed during model training"
+        "**Key Observation:** Brown Spot and Leaf Smut are over-represented "
+        "with 2,000 images each, while other disease classes have only "
+        "~350-450 images. This imbalance is addressed during model training "
         "through class weighting."
     )
 
@@ -121,9 +121,9 @@ def app():
     )
     st.markdown(
         "**Status: VALIDATED**\n\n"
-        "The visual samples show clear differences between healthy leaves and"
-        "diseased leaves. Healthy leaves appear uniform in color, while"
-        "diseased leaves show distinct lesions, discoloration, or texture"
+        "The visual samples show clear differences between healthy leaves and "
+        "diseased leaves. Healthy leaves appear uniform in color, while "
+        "diseased leaves show distinct lesions, discoloration, or texture "
         "changes depending on the disease type."
     )
 
@@ -141,9 +141,9 @@ def app():
     st.subheader("Hypothesis 3: Class Imbalance Influences Model Performance")
     st.markdown(
         "**Status: CONFIRMED**\n\n"
-        "The dataset shows severe class imbalance (Brown Spot and Leaf Smut:"
-        "2,000 images; Neck Blast: 453 images). This imbalance requires"
-        "mitigation strategies like class weighting  and data augmentation"
-        "during model training to ensure minority classes are learned"
+        "The dataset shows severe class imbalance (Brown Spot and Leaf Smut: "
+        "2,000 images; Neck Blast: 453 images). This imbalance requires "
+        "mitigation strategies like class weighting  and data augmentation "
+        "during model training to ensure minority classes are learned "
         "effectively."
     )

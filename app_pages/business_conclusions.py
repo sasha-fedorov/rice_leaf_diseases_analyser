@@ -6,15 +6,15 @@ from src.data_utils import load_evaluation_summary, load_classification_report
 def app():
     st.title("Business Conclusions")
     st.markdown(
-        "Summarize the project findings, validate the ML business case,"
+        "Summarize the project findings, validate the ML business case, "
         "and describe the expected business impact for rice farmers."
     )
 
     st.header("Executive Summary")
     st.markdown(
-        "The deployed model delivers a reliable rice leaf disease classifier"
-        "that supports timely treatment decisions for farmers. The app"
-        "combines visual analysis, model performance information, and"
+        "The deployed model delivers a reliable rice leaf disease classifier "
+        "that supports timely treatment decisions for farmers. The app "
+        "combines visual analysis, model performance information, and "
         "prediction recommendations."
     )
 
@@ -39,17 +39,17 @@ def app():
         "The model exceeds the project performance thresholds: \n"
         "- Validation accuracy target: 75%\n"
         "- Macro F1-score target: 0.70\n"
-        "- The app supports both healthy vs diseased classification and"
+        "- The app supports both healthy vs diseased classification and "
         "disease-specific diagnosis."
     )
 
     st.header("Hypothesis Validation")
     st.markdown(
-        "- **Hypothesis 1:** Healthy and diseased leaves have distinct visual"
+        "- **Hypothesis 1:** Healthy and diseased leaves have distinct visual "
         "patterns. **Validated.**\n"
-        "- **Hypothesis 2:** Different rice diseases can be distinguished by"
+        "- **Hypothesis 2:** Different rice diseases can be distinguished by "
         "image classification. **Validated.**\n"
-        "- **Hypothesis 3:** Class imbalance influences model performance."
+        "- **Hypothesis 3:** Class imbalance influences model performance. "
         "**Confirmed.**"
     )
 
@@ -72,23 +72,23 @@ def app():
 
     st.header("Business Recommendations")
     st.markdown(
-        "- Use the dashboard for rapid disease screening and to prioritize"
+        "- Use the dashboard for rapid disease screening and to prioritize "
         "field visits.\n"
-        "- Treat predictions with high confidence as actionable, while"
+        "- Treat predictions with high confidence as actionable, while "
         "low-confidence cases should be reviewed by experts.\n"
-        "- Continue collecting images for underrepresented disease classes to"
+        "- Continue collecting images for underrepresented disease classes to "
         "improve future model accuracy.\n"
-        "- Leverage the model output to reduce unnecessary treatments and"
+        "- Leverage the model output to reduce unnecessary treatments and "
         "support targeted interventions."
     )
 
     st.header("Model Deployment Notes")
     st.markdown(
-        "The model is suitable for farmer-facing deployment with the following"
-        "guidance: \n"
+        "The model is suitable for farmer-facing deployment with the "
+        "following guidance: \n"
         "1. Use clear, well-lit leaf images for the best results.\n"
         "2. Display confidence scores alongside each prediction.\n"
         "3. Flag low-confidence predictions for expert review.\n"
-        "4. Update the model with new data over time to reduce bias from class"
-        "imbalance."
+        "4. Update the model with new data over time to reduce bias from "
+        "class imbalance."
     )

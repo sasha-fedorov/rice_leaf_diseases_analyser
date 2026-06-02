@@ -69,6 +69,12 @@ def app():
         try:
             fig = plot_training_curves(history)
             st.pyplot(fig)
+            st.markdown(
+                "*This plot shows how training and validation accuracy and "
+                "loss evolved over epochs. A stable convergence with a small "
+                "gap between training and validation curves indicates the "
+                "model is learning well without severe overfitting.*"
+            )
         except Exception as e:
             st.error(f"Failed to render training curves: {e}")
     else:
@@ -79,6 +85,12 @@ def app():
         if CONFUSION_MATRIX_FILE.exists():
             img = plot_confusion_matrix_from_file(CONFUSION_MATRIX_FILE)
             st.image(img, use_container_width=True)
+            st.markdown(
+                "*The confusion matrix reveals which disease classes are most "
+                "often correctly classified and where the model confuses "
+                "similar conditions. High diagonal values show strong "
+                "true-positive rates for each class.*"
+            )
         else:
             st.info("Confusion matrix image not found.")
     except Exception as e:
@@ -90,6 +102,12 @@ def app():
             st.dataframe(class_report)
             fig = plot_class_report(class_report)
             st.pyplot(fig)
+            st.markdown(
+                "*The per-class performance chart highlights precision, "
+                "recall, and F1-score for each disease. This helps identify "
+                "which diseases the model handles best and which ones may "
+                "need more data or targeted improvement.*"
+            )
         except Exception as e:
             st.error(f"Failed to display classification report: {e}")
     else:

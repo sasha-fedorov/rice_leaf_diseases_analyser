@@ -47,10 +47,25 @@ def app():
     st.markdown(
         "- **Hypothesis 1:** Healthy and diseased leaves have distinct visual "
         "patterns. **Validated.**\n"
+        "  - Evidence: The EDA shows healthy leaf samples with uniform green "
+        "color and intact texture, while diseased samples contain visible "
+        "lesions, discoloration, and irregular patterns. Average-image "
+        "comparisons further highlight the contrast between healthy and "
+        "disease classes.\n"
         "- **Hypothesis 2:** Different rice diseases can be distinguished by "
         "image classification. **Validated.**\n"
+        "  - Evidence: Disease-specific visual cues such as brown spots, "
+        "yellowing, linear lesions, and margin necrosis are captured by the "
+        "trained model. Per-class performance reports demonstrate that the "
+        "model is able to separate multiple diseases with strong F1 scores "
+        "across most classes.\n"
         "- **Hypothesis 3:** Class imbalance influences model performance. "
-        "**Confirmed.**"
+        "**Confirmed.**\n"
+        "  - Evidence: The dataset contains a large imbalance between common "
+        "classes (e.g. Brown Spot and Leaf Smut) and rarer diseases, which is "
+        "reflected in variation in validation performance. The project "
+        "mitigates this with class weighting and careful evaluation of "
+        "minority-class results."
     )
 
     st.header("Performance Insights")

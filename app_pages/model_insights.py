@@ -84,7 +84,7 @@ def app():
     try:
         if CONFUSION_MATRIX_FILE.exists():
             img = plot_confusion_matrix_from_file(CONFUSION_MATRIX_FILE)
-            st.image(img, use_container_width=True)
+            st.image(img, width="stretch")
             st.markdown(
                 "*The confusion matrix reveals which disease classes are most "
                 "often correctly classified and where the model confuses "

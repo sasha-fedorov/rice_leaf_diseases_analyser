@@ -65,7 +65,7 @@ def app():
     val_imgs = dist_display["Validation Images"]
     dist_display["Val %"] = (val_imgs / val_imgs.sum() * 100).round(1)
 
-    st.dataframe(dist_display.set_index("Class"), use_container_width=True)
+    st.dataframe(dist_display.set_index("Class"), width="stretch")
 
     # Section 2: Visual Sample Review
     st.header("2. Visual Sample Review")
@@ -105,24 +105,24 @@ def app():
             st.markdown("**Healthy samples**")
             if healthy_paths:
                 for p in healthy_paths:
-                    st.image(str(p), use_container_width=True)
+                    st.image(str(p), width="stretch")
             else:
                 st.info("No healthy samples found.")
             avg_h = _average_images(healthy_paths)
             if avg_h is not None:
                 st.markdown("Average healthy image")
-                st.image(avg_h, use_container_width=True)
+                st.image(avg_h, width="stretch")
         with colR:
             st.markdown(f"**{disease_choice} samples**")
             if disease_paths:
                 for p in disease_paths:
-                    st.image(str(p), use_container_width=True)
+                    st.image(str(p), width="stretch")
             else:
                 st.info(f"No samples found for {disease_choice}.")
             avg_d = _average_images(disease_paths)
             if avg_d is not None:
                 st.markdown(f"Average {disease_choice} image")
-                st.image(avg_d, use_container_width=True)
+                st.image(avg_d, width="stretch")
 
     else:
         disease_options = sorted(class_mapping.values())
@@ -144,24 +144,24 @@ def app():
                 st.markdown(f"**{pair[0]} samples**")
                 if paths_a:
                     for p in paths_a:
-                        st.image(str(p), use_container_width=True)
+                        st.image(str(p), width="stretch")
                 else:
                     st.info(f"No samples for {pair[0]}.")
                 avg_a = _average_images(paths_a)
                 if avg_a is not None:
                     st.markdown(f"Average {pair[0]} image")
-                    st.image(avg_a, use_container_width=True)
+                    st.image(avg_a, width="stretch")
             with colB:
                 st.markdown(f"**{pair[1]} samples**")
                 if paths_b:
                     for p in paths_b:
-                        st.image(str(p), use_container_width=True)
+                        st.image(str(p), width="stretch")
                 else:
                     st.info(f"No samples for {pair[1]}.")
                 avg_b = _average_images(paths_b)
                 if avg_b is not None:
                     st.markdown(f"Average {pair[1]} image")
-                    st.image(avg_b, use_container_width=True)
+                    st.image(avg_b, width="stretch")
 
     # Section 3: Dataset Insights
     st.header("3. Dataset Insights")

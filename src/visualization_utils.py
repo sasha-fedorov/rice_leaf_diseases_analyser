@@ -41,7 +41,9 @@ def plot_class_report(report: pd.DataFrame):
         data=report_reset,
         x="f1-score",
         y=index_col_name,
+        hue=index_col_name,
         palette="viridis",
+        legend=False,
         ax=ax,
     )
     ax.set_title("F1 Score by Class")

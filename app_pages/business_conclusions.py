@@ -1,6 +1,6 @@
 import streamlit as st
 
-from src.data_utils import load_evaluation_summary, load_classification_report
+from src.data_utils import load_classification_report, load_evaluation_summary
 
 
 def app():

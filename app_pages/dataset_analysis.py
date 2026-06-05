@@ -1,10 +1,10 @@
-import streamlit as st
 import numpy as np
+import streamlit as st
 from PIL import Image
 
 from src.data_utils import (
-    load_class_distribution,
     get_sample_images_by_class,
+    load_class_distribution,
     load_class_index_mapping,
 )
 from src.visualization_utils import plot_class_distribution

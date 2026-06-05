@@ -1,19 +1,18 @@
-import random
 from pathlib import Path
+import random
 from typing import Dict, List
 
 import pandas as pd
-from PIL import Image
 import streamlit as st
 
 from .config import (
-    TRAIN_HISTORY_FILE,
+    CLASS_DISTRIBUTION_FILE,
     CLASSIFICATION_REPORT_FILE,
     EVALUATION_SUMMARY_FILE,
-    CLASS_DISTRIBUTION_FILE,
+    IMAGE_EXTENSIONS,
     RAW_IMAGES_DIR,
     RAW_LABELS_DIR,
-    IMAGE_EXTENSIONS,
+    TRAIN_HISTORY_FILE,
 )
 
 

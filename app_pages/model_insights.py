@@ -1,16 +1,16 @@
 import streamlit as st
 
+from src.config import CONFUSION_MATRIX_FILE
 from src.data_utils import (
-    load_training_history,
     load_classification_report,
     load_evaluation_summary,
+    load_training_history,
 )
 from src.visualization_utils import (
-    plot_training_curves,
     plot_class_report,
     plot_confusion_matrix_from_file,
+    plot_training_curves,
 )
-from src.config import CONFUSION_MATRIX_FILE
 
 
 def app():

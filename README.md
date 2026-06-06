@@ -271,3 +271,75 @@ Just about exploring as a user and reproducing the work as a technical user.
 - User Story 5.4: As a technical user, I want the model artifacts and evaluation outputs included in the repository so that I can validate the results and extend the project.
 
 
+## Deployment on Render
+
+This project can be deployed on a free Render instance using Streamlit and a simple blueprint setup. A free Render service is suitable for demonstration and light usage.
+
+1. Create a Render account and start a new project.
+   - See Render’s onboarding guide for your first deployment: https://render.com/docs/your-first-deploy
+2. Use the public repository or your own fork:
+   - Repository: https://github.com/sasha-fedorov/rice_leaf_diseases_analyser
+3. Set up a Render service using a free instance:
+   - Add a new service to your Render project.
+   - Choose a name for the service.
+   - Select the `Free` instance plan.
+   - Use this build command:
+     - `pip install --upgrade pip && pip install -r requirements-render.txt`
+   - Use this start command:
+     - `streamlit run app.py --server.port $PORT --server.address 0.0.0.0`
+   - Set the environment variable:
+     - `PYTHON_VERSION` = `3.12.13`
+4. Alternatively, add a Render blueprint:
+   - In the Render dashboard, select `Blueprints`.
+   - Click `New Blueprint Instance`.
+   - Connect the repository.
+   - Specify a name for the blueprint instance.
+   - Deploy the blueprint.
+
+
+## Forking and Cloning
+
+This section explains how to fork or clone this repository.
+
+### Forking
+
+To fork the project repository to your own GitHub account:
+
+1. Log in (or sign up) to GitHub.
+2. Go to the repository: **[sasha-fedorov/rice_leaf_diseases_analyser](https://github.com/sasha-fedorov/rice_leaf_diseases_analyser)**.
+3. Click the **Fork** button in the top right corner to create a copy under your own account.
+
+### Cloning
+
+1. Open the repository page on GitHub.
+2. Click the **<> Code** button above the file list.
+3. Copy the HTTPS URL shown in the dialog.
+4. Open a terminal or command prompt on your computer.
+5. Change to the folder where you want to store the project.
+6. Run:
+   - `git clone https://github.com/sasha-fedorov/rice_leaf_diseases_analyser`
+7. Press **Enter** to create the local copy.
+
+### Installing Requirements
+
+- `requirements.txt` includes all development and notebook dependencies.
+- `requirements-render.txt` contains the packages needed for the deployed dashboard.
+
+To install everything needed for full local development and notebook execution, run:
+
+```bash
+pip install -r requirements.txt
+```
+
+## How to Run the Dashboard
+
+1. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+2. Start the Streamlit app from the project root:
+```bash
+streamlit run app.py
+```
+3. Open the local URL provided by Streamlit in a browser.
+

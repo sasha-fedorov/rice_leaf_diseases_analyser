@@ -75,7 +75,7 @@ Disease detection relies mainly on manual visual inspection by farmers or extens
 - Dependent on expert knowledge that may not be widely available
 - Prone to human error, especially for visually similar diseases
 
-**Business Requirements:**
+### Business Requirements
 
 **Requirement 1 - Visual Evidence & Analysis:**
 The client is interested in a study that visually differentiates healthy rice leaves from leaves affected by different diseases. This supports farmer education and builds confidence in automated recommendations.
@@ -88,46 +88,6 @@ The client is interested in a machine learning solution capable of accurately cl
 This classification enables targeted, disease-specific treatment recommendations.
 
 
-## Project Epics & User Stories
-This section describes the key work streams and product-oriented user stories that align the analytics, model development, dashboard design, and deployment goals with the business requirements.
-
-### Epic 1: Data Collection and Information Gathering
-As a data analyst, gather and document the dataset characteristics needed for reliable disease modeling.
-- User Story 1.1: As a data analyst, I want to inspect the rice leaf dataset and verify class labels so that the disease categories are correctly defined for modeling.
-- User Story 1.2: As a data analyst, I want to document dataset quality and class imbalance so that the project can address biases before training.
-- User Story 1.3: As a data analyst, I want to confirm the dataset format and annotation structure so that the ML pipeline can use the data consistently.
-- User Story 1.4: As a data analyst, I want to map the dataset back to business requirements so that the model supports healthy-versus-diseased classification and disease-specific diagnosis.
-
-### Epic 2: Data Visualization, Cleaning and Preparation
-As a data analyst and data scientist, prepare the dataset and produce visual evidence that supports model-ready input.
-- User Story 2.1: As a data analyst, I want to generate class distribution and imbalance plots so that I can validate Requirement 1 and quantify dataset skew.
-- User Story 2.2: As a data scientist, I want to create sample image visualizations for healthy and diseased leaves so that decision-makers can see the visual differences.
-- User Story 2.3: As a data scientist, I want to preprocess and augment images for model training so that the classifier generalizes across field conditions.
-- User Story 2.4: As a data scientist, I want to produce dataset summaries and EDA findings so that the dashboard transparently reflects the training data.
-
-### Epic 3: Model Training
-As a data scientist, train and evaluate a disease classification model that satisfies the defined success metrics.
-- User Story 3.1: As a data scientist, I want to train a CNN model on rice leaf images so that it can distinguish healthy leaves from 8 disease categories.
-- User Story 3.2: As a data scientist, I want to evaluate the model using validation accuracy and macro F1-score so that it meets the business performance thresholds.
-- User Story 3.3: As a data scientist, I want to analyze per-class metrics and confusion matrix results so that I can identify which disease classes require more data or tuning.
-- User Story 3.4: As a data scientist, I want to document model limitations and treatment of class imbalance so that stakeholders understand performance tradeoffs.
-
-### Epic 4: Dashboard Planning, Design and Development
-From a non-technical user perspective, design a dashboard that makes model insights and predictions accessible.
-- User Story 4.1: As a product stakeholder, I want a Project Summary page so that I can understand the business problem and project objectives quickly.
-- User Story 4.2: As a non-technical user, I want a Dataset Analysis page so that I can see visual evidence of healthy vs diseased leaves and class imbalance.
-- User Story 4.3: As a non-technical user, I want a Model Insights page so that I can review training performance and model reliability before using predictions.
-- User Story 4.4: As a farmer or extension officer, I want a Disease Predictor page so that I can upload a leaf image and get a disease classification with confidence.
-- User Story 4.5: As a business sponsor, I want a Business Conclusions page so that I can see whether the project met the defined requirements.
-
-### Epic 5: Dashboard Deployment / Project Release
-Just about exploring as a user and reproducing the work as a technical user.
-- User Story 5.1: As a user, I want to launch the dashboard locally so that I can explore the model and results without needing a separate deployment environment.
-- User Story 5.2: As a technical user, I want clear run instructions and project structure so that I can reproduce the solution from source.
-- User Story 5.3: As a user, I want the dashboard to present actionable recommendations so that I can make decisions based on the predictions.
-- User Story 5.4: As a technical user, I want the model artifacts and evaluation outputs included in the repository so that I can validate the results and extend the project.
-
-
 ## Hypotheses
 
 ### Hypothesis 1 - Healthy and Diseased Leaves Have Distinct Visual Patterns
@@ -135,47 +95,60 @@ Just about exploring as a user and reproducing the work as a technical user.
 **Hypothesis:**
 Healthy rice leaves and diseased rice leaves exhibit noticeable visual differences in color, texture, and lesion patterns.
 
-**Validation:**
-- Perform exploratory image analysis on samples from each class.
-- Compare visual characteristics between healthy and diseased leaves.
-- Analyze image distributions and representative examples.
+**Status:** VALIDATED
 
-**Statistical Evidence:**
-- Sample image comparisons
-- Color distribution analysis
-- Class-wise image visualizations
-
+**Evidence & How we validated it in this project:**
+- Dataset Analysis presents sample grids showing consistent visual differences: healthy leaves are generally uniform green, while diseased leaves show lesions, spotting, or margin necrosis.
+- Average-image comparisons (Dataset Analysis) highlight persistent lesion regions and color shifts for disease classes versus healthy samples.
+- Color histograms and distribution plots show measurable differences in pixel value distributions between healthy and diseased images.
 
 ### Hypothesis 2 - Different Rice Diseases Can Be Distinguished from Images
 
 **Hypothesis:**
 Different rice leaf diseases contain unique visual characteristics that allow them to be differentiated from one another using image classification techniques.
 
-**Validation:**
-- Compare image samples across disease classes.
-- Train a classification model and analyze class prediction performance.
-- Evaluate which classes are most frequently confused.
+**Status:** VALIDATED
 
-**Statistical Evidence:**
-- Confusion matrix
-- Precision, Recall, and F1-score by class
-- Misclassification analysis
-
+**Evidence & How we validated it in this project:**
+- Visual EDA and pairwise class comparisons show disease-specific cues (e.g., brown lesions for Brown Spot, concentric rings for Leaf Blast, linear yellowing for Bacterial Leaf Blight).
+- The trained classifier demonstrates per-class separation in `Model Insights`: most classes achieve strong F1-scores and high true-positive rates on the confusion matrix.
+- Misclassification analysis (confusion matrix, classification report) pinpoints specific confusions and supports targeted data-collection or augmentation strategies.
 
 ### Hypothesis 3 - Class Imbalance Influences Model Performance
 
 **Hypothesis:**
 The imbalance in class distribution negatively affects prediction performance for underrepresented disease categories.
 
-**Validation:**
-- Analyze dataset class distribution.
-- Compare performance metrics across classes.
-- Evaluate whether minority classes produce lower prediction accuracy.
+**Status:** CONFIRMED
 
-**Statistical Evidence:**
-- Class distribution plots
-- Per-class evaluation metrics
-- Comparison of prediction performance between majority and minority classes
+**Evidence & How we validated it in this project:**
+- Class distribution plots (Dataset Analysis) reveal large skew: some classes (e.g., Brown Spot, Leaf Smut) have many more samples than others.
+- Per-class metrics in `Model Insights` show lower recall/F1 for several minority classes, consistent with imbalance-driven performance drops.
+- Mitigations applied: class weighting during training and data augmentation for minority classes; further data collection is recommended for persistent low-performing classes.
+
+**Where to see these results in the dashboard:** Dataset Analysis (visual examples, averages, histograms), Model Insights (training curves, confusion matrix, per-class F1), and Business Conclusions (summaries and recommendations).
+
+
+## Rationale — Mapping Requirements to Visualisations & ML Tasks
+
+This rationale explains why each business requirement is implemented via the chosen visualizations and ML tasks, and how those artefacts support decision-making.
+
+- **Requirement 1 — Visual Evidence & Analysis**
+  - Visualisations: class distribution bar charts, sample image grids, average-image comparisons, and color histograms.
+  - ML / data tasks: label verification, image cleaning, stratified sampling, and augmentation for minority classes.
+  - Why: Visual evidence demonstrates separability and dataset quality (supports farmer trust and Requirement 1).
+
+- **Requirement 2 — Automated Disease Classification**
+  - Visualisations: training curves, confusion matrix, per-class precision/recall/F1 charts, and classification report tables.
+  - ML / model tasks: transfer-learning model training, class-weighting, hyperparameter tuning, per-class error analysis, and model calibration.
+  - Why: These artifacts quantify model reliability and expose class-level weaknesses so the classifier can be made actionable (supports Requirement 2).
+
+- **Success Metrics & Monitoring**
+  - Visualisations: metric cards (validation accuracy, macro F1), epoch curves for stability, and class-level performance charts.
+  - Tasks: track evaluation metrics during training, record model artifacts, and include per-class thresholds to trigger further data collection.
+  - Why: Mapping metrics to visuals ensures stakeholders can quickly verify if success criteria (e.g., 75% accuracy, 0.70 macro F1) are met.
+
+Use the `Dataset Analysis` and `Model Insights` pages together to connect the visual evidence (what the data looks like) with the ML outcomes (how the model performs), and consult `Business Conclusions` for recommended actions tied to those results.
 
 
 ## Machine Learning Business Case
@@ -209,7 +182,6 @@ A model that can:
 - **No Class Below 50% Accuracy:** Even minority disease classes should achieve >50% accuracy to be actionable.
 
 **Business Applicability:**
-- **Dashboard Usability:** Model predictions are presented with confidence scores and reasoning on an interactive dashboard.
 - **Dashboard Usability:** Model predictions are presented with confidence scores and reasoning on an interactive dashboard.
 - **Farmer Trust:** The dashboard presents sample images and prediction explanations.
 - **Actionable Recommendations:** Each prediction includes suggested treatment and next steps.
@@ -257,3 +229,45 @@ A model that can:
 - Investigate misclassified examples to understand visual confusion between disease types.
 - Consider ensemble methods combining multiple models for improved robustness.
 - Integrate farmer feedback to refine recommendations and model retraining strategy.
+
+
+## Project Epics & User Stories
+This section describes the key work streams and product-oriented user stories that align the analytics, model development, dashboard design, and deployment goals with the business requirements.
+
+### Epic 1: Data Collection and Information Gathering
+As a data analyst, gather and document the dataset characteristics needed for reliable disease modeling.
+- User Story 1.1: As a data analyst, I want to inspect the rice leaf dataset and verify class labels so that the disease categories are correctly defined for modeling.
+- User Story 1.2: As a data analyst, I want to document dataset quality and class imbalance so that the project can address biases before training.
+- User Story 1.3: As a data analyst, I want to confirm the dataset format and annotation structure so that the ML pipeline can use the data consistently.
+- User Story 1.4: As a data analyst, I want to map the dataset back to business requirements so that the model supports healthy-versus-diseased classification and disease-specific diagnosis.
+
+### Epic 2: Data Visualization, Cleaning and Preparation
+As a data analyst and data scientist, prepare the dataset and produce visual evidence that supports model-ready input.
+- User Story 2.1: As a data analyst, I want to generate class distribution and imbalance plots so that I can validate Requirement 1 and quantify dataset skew.
+- User Story 2.2: As a data scientist, I want to create sample image visualizations for healthy and diseased leaves so that decision-makers can see the visual differences.
+- User Story 2.3: As a data scientist, I want to preprocess and augment images for model training so that the classifier generalizes across field conditions.
+- User Story 2.4: As a data scientist, I want to produce dataset summaries and EDA findings so that the dashboard transparently reflects the training data.
+
+### Epic 3: Model Training
+As a data scientist, train and evaluate a disease classification model that satisfies the defined success metrics.
+- User Story 3.1: As a data scientist, I want to train a CNN model on rice leaf images so that it can distinguish healthy leaves from 8 disease categories.
+- User Story 3.2: As a data scientist, I want to evaluate the model using validation accuracy and macro F1-score so that it meets the business performance thresholds.
+- User Story 3.3: As a data scientist, I want to analyze per-class metrics and confusion matrix results so that I can identify which disease classes require more data or tuning.
+- User Story 3.4: As a data scientist, I want to document model limitations and treatment of class imbalance so that stakeholders understand performance tradeoffs.
+
+### Epic 4: Dashboard Planning, Design and Development
+From a non-technical user perspective, design a dashboard that makes model insights and predictions accessible.
+- User Story 4.1: As a product stakeholder, I want a Project Summary page so that I can understand the business problem and project objectives quickly.
+- User Story 4.2: As a non-technical user, I want a Dataset Analysis page so that I can see visual evidence of healthy vs diseased leaves and class imbalance.
+- User Story 4.3: As a non-technical user, I want a Model Insights page so that I can review training performance and model reliability before using predictions.
+- User Story 4.4: As a farmer or extension officer, I want a Disease Predictor page so that I can upload a leaf image and get a disease classification with confidence.
+- User Story 4.5: As a business sponsor, I want a Business Conclusions page so that I can see whether the project met the defined requirements.
+
+### Epic 5: Dashboard Deployment / Project Release
+Just about exploring as a user and reproducing the work as a technical user.
+- User Story 5.1: As a user, I want to launch the dashboard locally so that I can explore the model and results without needing a separate deployment environment.
+- User Story 5.2: As a technical user, I want clear run instructions and project structure so that I can reproduce the solution from source.
+- User Story 5.3: As a user, I want the dashboard to present actionable recommendations so that I can make decisions based on the predictions.
+- User Story 5.4: As a technical user, I want the model artifacts and evaluation outputs included in the repository so that I can validate the results and extend the project.
+
+

@@ -88,6 +88,46 @@ The client is interested in a machine learning solution capable of accurately cl
 This classification enables targeted, disease-specific treatment recommendations.
 
 
+## Project Epics & User Stories
+This section describes the key work streams and product-oriented user stories that align the analytics, model development, dashboard design, and deployment goals with the business requirements.
+
+### Epic 1: Data Collection and Information Gathering
+As a data analyst, gather and document the dataset characteristics needed for reliable disease modeling.
+- User Story 1.1: As a data analyst, I want to inspect the rice leaf dataset and verify class labels so that the disease categories are correctly defined for modeling.
+- User Story 1.2: As a data analyst, I want to document dataset quality and class imbalance so that the project can address biases before training.
+- User Story 1.3: As a data analyst, I want to confirm the dataset format and annotation structure so that the ML pipeline can use the data consistently.
+- User Story 1.4: As a data analyst, I want to map the dataset back to business requirements so that the model supports healthy-versus-diseased classification and disease-specific diagnosis.
+
+### Epic 2: Data Visualization, Cleaning and Preparation
+As a data analyst and data scientist, prepare the dataset and produce visual evidence that supports model-ready input.
+- User Story 2.1: As a data analyst, I want to generate class distribution and imbalance plots so that I can validate Requirement 1 and quantify dataset skew.
+- User Story 2.2: As a data scientist, I want to create sample image visualizations for healthy and diseased leaves so that decision-makers can see the visual differences.
+- User Story 2.3: As a data scientist, I want to preprocess and augment images for model training so that the classifier generalizes across field conditions.
+- User Story 2.4: As a data scientist, I want to produce dataset summaries and EDA findings so that the dashboard transparently reflects the training data.
+
+### Epic 3: Model Training
+As a data scientist, train and evaluate a disease classification model that satisfies the defined success metrics.
+- User Story 3.1: As a data scientist, I want to train a CNN model on rice leaf images so that it can distinguish healthy leaves from 8 disease categories.
+- User Story 3.2: As a data scientist, I want to evaluate the model using validation accuracy and macro F1-score so that it meets the business performance thresholds.
+- User Story 3.3: As a data scientist, I want to analyze per-class metrics and confusion matrix results so that I can identify which disease classes require more data or tuning.
+- User Story 3.4: As a data scientist, I want to document model limitations and treatment of class imbalance so that stakeholders understand performance tradeoffs.
+
+### Epic 4: Dashboard Planning, Design and Development
+From a non-technical user perspective, design a dashboard that makes model insights and predictions accessible.
+- User Story 4.1: As a product stakeholder, I want a Project Summary page so that I can understand the business problem and project objectives quickly.
+- User Story 4.2: As a non-technical user, I want a Dataset Analysis page so that I can see visual evidence of healthy vs diseased leaves and class imbalance.
+- User Story 4.3: As a non-technical user, I want a Model Insights page so that I can review training performance and model reliability before using predictions.
+- User Story 4.4: As a farmer or extension officer, I want a Disease Predictor page so that I can upload a leaf image and get a disease classification with confidence.
+- User Story 4.5: As a business sponsor, I want a Business Conclusions page so that I can see whether the project met the defined requirements.
+
+### Epic 5: Dashboard Deployment / Project Release
+Just about exploring as a user and reproducing the work as a technical user.
+- User Story 5.1: As a user, I want to launch the dashboard locally so that I can explore the model and results without needing a separate deployment environment.
+- User Story 5.2: As a technical user, I want clear run instructions and project structure so that I can reproduce the solution from source.
+- User Story 5.3: As a user, I want the dashboard to present actionable recommendations so that I can make decisions based on the predictions.
+- User Story 5.4: As a technical user, I want the model artifacts and evaluation outputs included in the repository so that I can validate the results and extend the project.
+
+
 ## Hypotheses
 
 ### Hypothesis 1 - Healthy and Diseased Leaves Have Distinct Visual Patterns

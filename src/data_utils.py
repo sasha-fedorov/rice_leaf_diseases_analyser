@@ -10,9 +10,9 @@ from .config import (
     CLASSIFICATION_REPORT_FILE,
     EVALUATION_SUMMARY_FILE,
     IMAGE_EXTENSIONS,
-    RAW_IMAGES_DIR,
-    RAW_LABELS_DIR,
     TRAIN_HISTORY_FILE,
+    VISUAL_SAMPLE_IMAGES_DIR,
+    VISUAL_SAMPLE_LABELS_DIR,
 )
 
 
@@ -46,31 +46,29 @@ def get_sample_images_by_class(
     limit_per_class: int = 1
 ) -> Dict[str, List[Path]]:
     class_map = {}
-    label_dirs = [RAW_LABELS_DIR / "train", RAW_LABELS_DIR / "val"]
-    for label_dir in label_dirs:
-        if not label_dir.exists():
+
+    for label_path in VISUAL_SAMPLE_LABELS_DIR.glob("*.txt"):
+        if label_path.stat().st_size == 0:
             continue
-        for label_path in label_dir.glob("*.txt"):
-            if label_path.stat().st_size == 0:
-                continue
-            with open(label_path, "r", encoding="utf-8") as fh:
-                first_line = fh.readline().strip()
-            if not first_line:
-                continue
-            parts = first_line.split()
-            class_id = parts[0]
-            image_name = label_path.stem
-            image_path = None
-            for ext in IMAGE_EXTENSIONS:
-                candidate = (
-                    RAW_IMAGES_DIR / label_dir.name / f"{image_name}{ext}"
-                )
-                if candidate.exists():
-                    image_path = candidate
-                    break
-            if image_path is None:
-                continue
-            class_map.setdefault(class_id, []).append(image_path)
+        with open(label_path, "r", encoding="utf-8") as fh:
+            first_line = fh.readline().strip()
+        if not first_line:
+            continue
+        parts = first_line.split()
+        class_id = parts[0]
+        image_name = label_path.stem
+        image_path = None
+        for ext in IMAGE_EXTENSIONS:
+            candidate = (
+                VISUAL_SAMPLE_IMAGES_DIR / f"{image_name}{ext}"
+            )
+            if candidate.exists():
+                image_path = candidate
+                break
+        if image_path is None:
+            continue
+        class_map.setdefault(class_id, []).append(image_path)
+
     sample_map = {}
     for class_id, paths in class_map.items():
         sample_map[class_id] = random.sample(

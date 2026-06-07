@@ -271,6 +271,46 @@ Just about exploring as a user and reproducing the work as a technical user.
 - User Story 5.4: As a technical user, I want the model artifacts and evaluation outputs included in the repository so that I can validate the results and extend the project.
 
 
+## Dashboard Design
+
+The Streamlit dashboard is organized to meet the business requirements and guide both technical and non-technical users through the analysis, model evaluation, and operational use of the classifier.
+
+- **Project Summary**
+  - Purpose: Give an accessible executive overview of the problem, dataset, objectives, and key takeaways.
+  - Key visuals: short project description, top-level evaluation metric cards, links to notebooks and artifacts.
+  - Intended users: product sponsors, project managers, and new team members who need a high-level summary.
+
+- **Dataset Analysis**
+  - Purpose: Provide visual evidence that healthy and diseased leaves are separable and document dataset quality.
+  - Key visuals: class distribution bar chart, sample image grids, average-image comparisons, color histograms.
+  - Interactions: select classes to compare, view averaged images and per-class samples, inspect class counts.
+  - Intended users: data analysts, data scientists, and stakeholders verifying Requirement 1.
+
+- **Model Insights**
+  - Purpose: Examine training behavior and per-class performance to validate the ML business case.
+  - Key visuals: training curves (accuracy/loss), confusion matrix, per-class precision/recall/F1 charts, classification report table.
+  - Interactions: review epoch curves, inspect confusion matrix cells, export per-class metrics for analysis.
+  - Intended users: data scientists and technical reviewers assessing Requirement 2 and success metrics.
+
+- **Disease Predictor**
+  - Purpose: Provide an operational interface for users to obtain disease classifications from leaf images.
+  - Key visuals: uploaded image preview (with optional YOLO bbox overlay), top-3 predictions with confidence, downloadable CSV for batch runs.
+  - Interactions: upload single or multiple images, view top predictions, download results, inspect predicted probabilities.
+  - Intended users: farmers, extension officers, and field technicians using the tool for screening and triage.
+
+- **Business Conclusions**
+  - Purpose: Summarize validated hypotheses, surface business recommendations, and provide deployment guidance.
+  - Key visuals: executive metrics, best/worst class summaries, recommended next steps and data collection priorities.
+  - Intended users: decision-makers and deployment engineers who will act on the model outputs.
+
+### Project Structure for the Dashboard
+
+- `app.py`: main Streamlit app entry point
+- `app_pages/`: page modules for each dashboard section
+- `src/`: helper modules for data loading, model prediction, and visualization
+- `inputs/`: dataset and annotation files
+- `outputs/`: saved evaluation results, model artifacts, and visualizations
+
 ## Deployment on Render
 
 This project can be deployed on a free Render instance using Streamlit and a simple blueprint setup. A free Render service is suitable for demonstration and light usage.

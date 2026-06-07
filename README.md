@@ -75,6 +75,7 @@ Disease detection relies mainly on manual visual inspection by farmers or extens
 - Dependent on expert knowledge that may not be widely available
 - Prone to human error, especially for visually similar diseases
 
+
 ### Business Requirements
 
 **Requirement 1 - Visual Evidence & Analysis:**
@@ -280,11 +281,25 @@ The Streamlit dashboard is organized to meet the business requirements and guide
   - Key visuals: short project description, top-level evaluation metric cards, links to notebooks and artifacts.
   - Intended users: product sponsors, project managers, and new team members who need a high-level summary.
 
+    <details>
+      <summary><b>Click To Expand Full Page Preview</b></summary>
+
+      ![Page Screenshot](documentation/images/dashboard/project_summary.png)
+
+    </details>
+
 - **Dataset Analysis**
   - Purpose: Provide visual evidence that healthy and diseased leaves are separable and document dataset quality.
   - Key visuals: class distribution bar chart, sample image grids, average-image comparisons, color histograms.
   - Interactions: select classes to compare, view averaged images and per-class samples, inspect class counts.
   - Intended users: data analysts, data scientists, and stakeholders verifying Requirement 1.
+
+    <details>
+      <summary><b>Click To Expand Full Page Preview</b></summary>
+
+      ![Page Screenshot](documentation/images/dashboard/dataset_analysis.png)
+
+    </details>
 
 - **Model Insights**
   - Purpose: Examine training behavior and per-class performance to validate the ML business case.
@@ -292,16 +307,38 @@ The Streamlit dashboard is organized to meet the business requirements and guide
   - Interactions: review epoch curves, inspect confusion matrix cells, export per-class metrics for analysis.
   - Intended users: data scientists and technical reviewers assessing Requirement 2 and success metrics.
 
+    <details>
+      <summary><b>Click To Expand Full Page Preview</b></summary>
+
+      ![Page Screenshot](documentation/images/dashboard/model_insights.png)
+
+    </details>
+
 - **Disease Predictor**
   - Purpose: Provide an operational interface for users to obtain disease classifications from leaf images.
   - Key visuals: uploaded image preview (with optional YOLO bbox overlay), top-3 predictions with confidence, downloadable CSV for batch runs.
   - Interactions: upload single or multiple images, view top predictions, download results, inspect predicted probabilities.
   - Intended users: farmers, extension officers, and field technicians using the tool for screening and triage.
 
+    <details>
+      <summary><b>Click To Expand Full Page Preview</b></summary>
+
+      ![Page Screenshot](documentation/images/dashboard/disease_predictor.png)
+
+    </details>
+
 - **Business Conclusions**
   - Purpose: Summarize validated hypotheses, surface business recommendations, and provide deployment guidance.
   - Key visuals: executive metrics, best/worst class summaries, recommended next steps and data collection priorities.
   - Intended users: decision-makers and deployment engineers who will act on the model outputs.
+
+    <details>
+      <summary><b>Click To Expand Full Page Preview</b></summary>
+
+      ![Page Screenshot](documentation/images/dashboard/business_conclusions.png)
+
+    </details>
+
 
 ### Project Structure for the Dashboard
 

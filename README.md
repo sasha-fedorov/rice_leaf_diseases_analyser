@@ -1,5 +1,11 @@
 # Rice Leaf Diseases Analyser
 
+This project explores the use of machine learning and computer vision techniques for rice leaf disease classification. Using a publicly available image dataset, the study investigates whether visual patterns in rice leaves can be used to distinguish healthy plants from those affected by disease and identify the most likely disease category.
+
+The project combines exploratory data analysis, image preprocessing, model training, and evaluation within an interactive Streamlit dashboard designed to support the defined business requirements and validate the project hypotheses.
+
+The application is deployed on Render and is available at: [Rice Leaf Disease Analyser](https://rice-leaf-diseases-analyser.onrender.com/).
+
 
 ## Dataset Content
 

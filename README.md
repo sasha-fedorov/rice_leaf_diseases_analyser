@@ -354,6 +354,87 @@ The Streamlit dashboard is organized to meet the business requirements and guide
 - `inputs/`: dataset and annotation files
 - `outputs/`: saved evaluation results, model artifacts, and visualizations
 
+
+## Testing
+
+### Manual Testing
+
+This subsection lists the core dashboard pages and key features to verify manually in the live Streamlit app.
+
+| Page and Feature | Action | Expected Result | Pass / Fail |
+|---|---|---|---|
+| Dashboard | Open the deployed live link | Deployed app opens and loads successfully | Pass |
+| Dashboard | Click each sidebar navigation item | Each sidebar selection opens its corresponding page | Pass |
+| Project Summary page | Open the page in Streamlit | Page loads and shows project goals, scope and success criteria | Pass |
+| Dataset Analysis page | Open the page in Streamlit | Dataset visuals and distribution insights display correctly | Pass |
+| Dataset Analysis page | Use visual example comparison tools | Comparison widgets respond and show selected images or averages | Pass |
+| Model Insights page | Open the page in Streamlit | Evaluation metrics and confusion matrix appear correctly | Pass |
+| Disease Predictor page | Upload a sample leaf image | Prediction results and confidence scores display | Pass |
+| Disease Predictor page | Upload multiple leaf images | Multiple uploads are accepted, and batch prediction results appear | Pass |
+| Disease Predictor page | Download predictions as CSV | Predictions are exported and downloaded correctly | Pass |
+| Business Conclusions page | Open the page in Streamlit | Recommendations and validated hypotheses are shown | Pass |
+
+### User Story Testing
+
+This subsection lists each user story by epic, how it was tested, and the current pass/fail status. Keep the result column simple and update it to `Pass` or `Fail` after executing the test.
+
+**[Epic 1](#epic-1-data-collection-and-information-gathering): Data Collection and Information Gathering**
+
+| User Story | How it was tested | Pass / Fail |
+|---|---|---|
+| User Story 1.1 | Check that `src.data_utils` imports without error and class mapping files exist. | Pass |
+| User Story 1.2 | Confirm `outputs/datasets/eda/class_distribution.csv` exists. | Pass |
+| User Story 1.3 | Confirm `inputs/datasets/raw/rice/data.yaml` and label `.txt` files exist. | Pass |
+| User Story 1.4 | Verify the README and epic documentation reference business requirements. | Pass |
+
+**[Epic 2](#epic-2-data-visualization-cleaning-and-preparation): Data Visualization, Cleaning and Preparation**
+
+| User Story | How it was tested | Pass / Fail |
+|---|---|---|
+| User Story 2.1 | Verify class distribution plotting code is present and imports cleanly. | Pass |
+| User Story 2.2 | Verify Dataset Analysis page includes sample image comparisons and average-image features. | Pass |
+| User Story 2.3 | Check that preprocessing and augmentation are documented in notebooks or code. | Pass |
+| User Story 2.4 | Confirm EDA output files exist under `outputs/datasets/eda/`. | Pass |
+
+**[Epic 3](#epic-3-model-training): Model Training**
+
+| User Story | How it was tested | Pass / Fail |
+|---|---|---|
+| User Story 3.1 | Confirm model artifacts exist under `outputs/models/`. | Pass |
+| User Story 3.2 | Confirm `outputs/evaluation/evaluation_summary.csv` exists and is readable. | Pass |
+| User Story 3.3 | Confirm `classification_report.csv` and `confusion_matrix.png` exist in `outputs/evaluation/`. | Pass |
+| User Story 3.4 | Verify documentation describes class imbalance and model limitations. | Pass |
+
+**[Epic 4](#epic-4-dashboard-planning-design-and-development): Dashboard Planning, Design and Development**
+
+| User Story | How it was tested | Pass / Fail |
+|---|---|---|
+| User Story 4.1 | Confirm `Project Summary` page file exists and loads without import errors. | Pass |
+| User Story 4.2 | Confirm `Dataset Analysis` page file exists and loads without import errors. | Pass |
+| User Story 4.3 | Confirm `Model Insights` page file exists and loads without import errors. | Pass |
+| User Story 4.4 | Confirm `Disease Predictor` page file exists and loads without import errors. | Pass |
+| User Story 4.5 | Confirm `Business Conclusions` page file exists and loads without import errors. | Pass |
+
+**[Epic 5](#epic-5-dashboard-deployment--project-release): Dashboard Deployment / Project Release**
+
+| User Story | How it was tested | Pass / Fail |
+|---|---|---|
+| User Story 5.1 | Confirm local run instructions exist in README and `requirements.txt`. | Pass |
+| User Story 5.2 | Confirm project structure is documented. | Pass |
+| User Story 5.3 | Confirm business recommendations are included in `Business Conclusions`. | Pass |
+| User Story 5.4 | Confirm model artifacts and evaluation outputs are included in the repository. | Pass |
+
+### Validation
+
+The project code was validated throughout development using the Flake8 extension for Visual Studio Code to help maintain compliance with PEP 8 coding standards and promote code consistency.
+
+No significant Flake8 issues remain in the project. The only reported warnings are instances of `E402 module level import not at top of file`
+
+These warnings occur within Jupyter notebooks where certain setup operations (such as configuring the project root directory or setting environment variables) must be executed before importing some modules. This is a common pattern in notebook-based workflows and does not affect the functionality, readability, or maintainability of the code.
+
+All imports are grouped at the beginning of their respective notebook sections, and the `E402` warnings were therefore considered acceptable and left unresolved.
+
+
 ## Deployment on Render
 
 This project can be deployed on a free Render instance using Streamlit and a simple blueprint setup. A free Render service is suitable for demonstration and light usage.

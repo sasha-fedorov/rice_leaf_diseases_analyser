@@ -282,6 +282,8 @@ Just about exploring as a user and reproducing the work as a technical user.
 
 The Streamlit dashboard is organized to meet the business requirements and guide both technical and non-technical users through the analysis, model evaluation, and operational use of the classifier.
 
+### App Pages
+
 - **Project Summary**
   - Purpose: Give an accessible executive overview of the problem, dataset, objectives, and key takeaways.
   - Key visuals: short project description, top-level evaluation metric cards, links to notebooks and artifacts.
@@ -506,4 +508,16 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 3. Open the local URL provided by Streamlit in a browser.
+
+
+## Main Data Analysis and Machine Learning Libraries
+
+- `tensorflow`, `keras` and `MobileNetV2` — used for building, training, and running the image classification model; MobileNetV2 provides the transfer-learning backbone for efficient feature extraction.
+- `streamlit` — used to build and run the interactive dashboard, render pages, accept file uploads, and display model predictions.
+- `kaggle` — used to access and download the rice leaf disease dataset from Kaggle during dataset preparation.
+- `numpy` — used for numerical operations, image array manipulation, loading model predictions, and preparing data for training.
+- `matplotlib` — used for plotting charts, histograms, and visualizing model performance graphs and image comparisons.
+- `Pillow` — used for opening, resizing, and converting image files before they are passed into the model or displayed in the dashboard.
+- `scikit-learn` — used for evaluation metrics, dataset splitting, and validation utilities such as classification reports and confusion matrix computations.
+- `seaborn` — used for statistical visualizations, including heatmaps and enhanced distribution plots to support exploratory data analysis.
 

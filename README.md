@@ -521,3 +521,25 @@ streamlit run app.py
 - `scikit-learn` — used for evaluation metrics, dataset splitting, and validation utilities such as classification reports and confusion matrix computations.
 - `seaborn` — used for statistical visualizations, including heatmaps and enhanced distribution plots to support exploratory data analysis.
 
+
+## Tools & Programs
+
+- **[VS Code](https://code.visualstudio.com/)** – Main code editor for development.
+- **[flake8 VSCode Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.flake8)** – Enforced PEP8 compliance.
+- **[Figma](https://www.figma.com/)** – used to create documentation images.
+- **[Fork](https://fork.dev/)** – Git client for version control.
+
+
+## Credits
+
+This project was developed with the support of the following resources and communities:
+
+- [Code Institute's Predictive Analytics course](https://codeinstitute.net/de/diploma-in-web-applications-development-with-ai/) materials, with particular reference to the Malaria Detector project, which provided guidance on project structure, workflow, and dashboard design.
+- The Kaggle dataset used in this project: [RICE Leaf Diseases](https://www.kaggle.com/datasets/yusufmurtaza01/rice-leaf-diseases/data) by Yusuf Murtaza.
+- [Data Science Cheat Sheets](https://www.kaggle.com/datasets/timoboz/data-science-cheat-sheets) from Kaggle, used as a reference during development and analysis.
+- The [Stack Overflow](https://stackoverflow.com/) community for troubleshooting and technical guidance.
+- [ChatGPT](https://chatgpt.com/) for assistance with project planning, structuring ideas, README writing, documentation refinement, and proofreading.
+- [Google Gemini](https://gemini.google.com/) for research support, problem-solving assistance, and exploring alternative implementation approaches.
+- The wider data science and machine learning community, including blog posts, documentation, tutorials, GitHub repositories, forum discussions, and educational videos that contributed to the learning and development process.
+
+While every effort has been made to credit major sources directly, some ideas and solutions were discovered through AI-assisted research workflows that aggregated information from multiple public resources.
